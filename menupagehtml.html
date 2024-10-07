@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- Include the Tailwind CSS stylesheet -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css">
+    <style>
+        /* Additional style for the dialog */
+        #contactDialog {
+            display: none;
+        }
+
+        #contactDialog .dialog-content {
+            background-color: #fff;
+            padding: 1em;
+            border-radius: 8px;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        }
+    </style>
+    <title>OTP Page</title>
+</head>
+<body class="min-h-screen flex items-center justify-center bg-gradient-to-br from-purple-500 to-blue-700 relative">
+
+    <!-- OTP Page Content -->
+    <div class="bg-white p-10 rounded-xl shadow-2xl w-96 relative" id="otpContent">
+        <h1 class="text-3xl font-bold text-center mb-4" id="welcomeMessage">Welcome, {{ username }}!</h1>
+        <p class="text-gray-500 mb-8 text-center">
+            Please choose one of the following options.
+        </p>
+        <p class="text-gray-500 mb-8 text-center" id="otpMessage"></p>
+
+        <!-- Buttons Section with dynamic sizing -->
+        <div class="flex flex-col items-center space-y-4">
+            <button onclick="redirectTocamera()" class="w-full p-3 text-lg font-bold text-white bg-blue-600 rounded hover:bg-blue-700 focus:outline-none focus:ring">
+                Survey
+            </button>
+            <button onclick="redirectTologin()" class="w-full p-3 text-lg font-bold text-white bg-blue-600 rounded hover:bg-blue-700 focus:outline-none focus:ring">
+                Destination
+            </button>
+            <button onclick="sendFeedback()" class="w-full p-3 text-lg font-bold text-white bg-blue-600 rounded hover:bg-blue-700 focus:outline-none focus:ring">
+                Feedback
+            </button>
+        </div>
+    </div>
+
+    <!-- Top right buttons container -->
+    <div class="absolute top-4 right-4 flex space-x-6" style="margin-right: 1px;">
+        <!-- Contact Us button -->
+        <button onclick="openContactDialog()" class='font-medium text-white hover:text-gray-300 highlightable'>
+            Contact Us
+        </button>
+        <!-- Sign Out button -->
+        <button onclick="logout()" class='font-medium text-white hover:text-gray-300 highlightable'>
+            Sign Out
+        </button>
+    </div>
+
+    <!-- Contact Us Dialog -->
+    <div id="contactDialog" class="fixed inset-0 bg-black bg-opacity-50 hidden items-center justify-center">
+        <div class="bg-white p-8 rounded-md max-w-md" id="contactDialogContent">
+            <div class="zoom-container">
+                <p class="text-lg text-gray-800">Ebin Joe<br>ebinjoe2002@gmail.com<br>
+                <br>Sahil Bhadane<br>sahilshashikant.bhadane2021@vitstudent.ac.in</p>
+            </div>
+            <button id="closeButton" onclick="closeContactDialog()" class="mt-4 btn text-white bg-blue-600 hover:bg-blue-700 w-full py-2 px-3 rounded-md">Close</button>
+        </div>
+    </div>
+
+    <script>
+    function redirectTocamera() {
+        window.location.href = '/survey'; // Change '/survey' to the appropriate route
+    }
+
+    function redirectTologin() {
+        window.location.href = '/destination'; // Change '/destination' to the appropriate route
+    }
+
+    function sendFeedback() {
+        window.location.href = '/feedback'; 
+    }
+
+    function openContactDialog() {
+        const contactDialog = document.getElementById('contactDialog');
+        contactDialog.style.display = 'flex';
+    }
+
+    function closeContactDialog() {
+        const contactDialog = document.getElementById('contactDialog');
+        contactDialog.style.display = 'none';
+    }
+
+    function logout() {
+        window.location.href = '/home'; // Change '/home' to the appropriate logout route
+    }
+    </script>
+
+</body>
+</html>

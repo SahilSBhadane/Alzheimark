@@ -1,0 +1,201 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- Include the Tailwind CSS stylesheet -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css">
+    <style>
+        /* Additional styles for the feedback container */
+        #feedbackContainer {
+            background-color: white;
+            width: 80%;
+            max-width: 800px;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            margin: 20px auto;
+            overflow-y: scroll;
+            max-height: 80vh; /* Adjusted height */
+        }
+
+        /* Additional style for the submit button */
+        #submitFeedbackButton {
+            width: auto; /* Adjusted width */
+            padding: 12px 24px; /* Added padding */
+            font-size: 1.25rem;
+            font-weight: bold;
+            color: white;
+            background-color: #2563EB;
+            border: none;
+            border-radius: 8px;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+
+        #submitFeedbackButton:hover {
+            background-color: #1E40AF;
+        }
+    </style>
+    <title>Feedback Page</title>
+</head>
+<body class="min-h-screen flex items-center justify-center bg-gradient-to-br from-purple-500 to-blue-700 relative">
+
+    <!-- Top right buttons container -->
+    <div class="absolute top-4 right-4 flex space-x-6" style="margin-right: 1px;">
+        <!-- Contact Us button -->
+        <button onclick="openContactDialog()" class='font-medium text-white hover:text-gray-300'>
+            Contact Us
+        </button>
+        <!-- Sign Out button -->
+        <a href='/home' onclick="event.preventDefault(); navigate('/homes');" class='font-medium text-white hover:text-gray-300'>
+            Sign Out
+        </a>
+    </div>
+
+    <!-- Feedback Container -->
+    <div id="feedbackContainer">
+        <h1 class="text-2xl font-bold mb-4">Feedback Questions</h1>
+
+        <!-- Feedback Questions -->
+        <div class="space-y-6">
+            <!-- Question 1 -->
+            <div>
+                <p class="font-semibold">1) How would you rate your overall satisfaction with the support and resources provided to you?</p>
+                <div class="ml-4">
+                    <label><input type="radio" name="satisfaction" value="Very satisfied"> Very satisfied</label><br>
+                    <label><input type="radio" name="satisfaction" value="Satisfied"> Satisfied</label><br>
+                    <label><input type="radio" name="satisfaction" value="Neutral"> Neutral</label><br>
+                    <label><input type="radio" name="satisfaction" value="Dissatisfied"> Dissatisfied</label><br>
+                    <label><input type="radio" name="satisfaction" value="Very dissatisfied"> Very dissatisfied</label>
+                </div>
+            </div>
+
+            <!-- Question 2 -->
+            <div>
+                <p class="font-semibold">2) Do you feel that the information provided has been helpful in managing your condition and improving your quality of life?</p>
+                <div class="ml-4">
+                    <label><input type="radio" name="helpful" value="Yes"> Yes</label><br>
+                    <label><input type="radio" name="helpful" value="Somewhat"> Somewhat</label><br>
+                    <label><input type="radio" name="helpful" value="No"> No</label>
+                </div>
+            </div>
+
+            <!-- Question 3 -->
+            <div>
+                <p class="font-semibold">3) Are there any specific topics or areas of support you would like to see addressed more comprehensively?</p>
+                <textarea class="w-full px-3 py-2 rounded border" rows="3" placeholder="Enter your response here"></textarea>
+            </div>
+
+            <!-- Question 4 -->
+            <div>
+                <p class="font-semibold">4) How would you rate the accessibility and usability of the resources provided (e.g., website, informational materials)?</p>
+                <select class="w-full px-3 py-2 rounded border" name="accessibility">
+                    <option value="Excellent">Excellent</option>
+                    <option value="Good">Good</option>
+                    <option value="Fair">Fair</option>
+                    <option value="Poor">Poor</option>
+                </select>
+            </div>
+
+            <!-- Question 5 -->
+            <div>
+                <p class="font-semibold">5) Have you encountered any challenges in accessing or utilizing the resources provided? If yes, please specify.</p>
+                <textarea class="w-full px-3 py-2 rounded border" rows="3" placeholder="Enter your response here"></textarea>
+            </div>
+
+            <!-- Question 6 -->
+            <div>
+                <p class="font-semibold">6) Are there any additional resources or tools you believe would be beneficial for individuals living with Alzheimer's disease?</p>
+                <textarea class="w-full px-3 py-2 rounded border" rows="3" placeholder="Enter your response here"></textarea>
+            </div>
+
+            <!-- Question 7 -->
+            <div>
+                <p class="font-semibold">7) How would you describe the level of support received from our team or caregivers?</p>
+                <select class="w-full px-3 py-2 rounded border" name="support">
+                    <option value="Excellent">Excellent</option>
+                    <option value="Good">Good</option>
+                    <option value="Fair">Fair</option>
+                    <option value="Poor">Poor</option>
+                </select>
+            </div>
+
+            <!-- Question 8 -->
+            <div>
+                <p class="font-semibold">8) Do you have any suggestions for improving the support and assistance provided to individuals with Alzheimer's disease?</p>
+                <textarea class="w-full px-3 py-2 rounded border" rows="3" placeholder="Enter your response here"></textarea>
+            </div>
+
+            <!-- Question 9 -->
+            <div>
+                <p class="font-semibold">9) On a scale of 1 to 10, how likely are you to recommend our services to others in a similar situation?</p>
+                <select class="w-32 px-3 py-2 rounded border" name="recommendation">
+                    <option value="1">1 (Not likely at all)</option>
+                    <option value="2">2</option>
+                    <option value="3">3</option>
+                    <option value="4">4</option>
+                    <option value="5">5</option>
+                    <option value="6">6</option>
+                    <option value="7">7</option>
+                    <option value="8">8</option>
+                    <option value="9">9</option>
+                    <option value="10">10 (Extremely likely)</option>
+                </select>
+            </div>
+
+            <!-- Question 10 -->
+            <div>
+                <p class="font-semibold">10) Is there any other feedback or comments you would like to share?</p>
+                <textarea class="w-full px-3 py-2 rounded border" rows="3" placeholder="Enter your response here"></textarea>
+            </div>
+        </div>
+
+        <!-- Submit Button -->
+        <div class="flex justify-center mt-6">
+            <button id="submitFeedbackButton" onclick="submitFeedback()">Submit</button>
+        </div>
+    </div>
+
+    <!-- Contact Us Dialog -->
+    <div id="contactDialog" class="fixed inset-0 bg-black bg-opacity-50 hidden items-center justify-center">
+        <div class="bg-white p-8 rounded-md max-w-md" id="contactDialogContent">
+            <div class="zoom-container">
+                <p class="text-lg text-gray-800">Ebin Joe<br>ebinjoe2002@gmail.com<br>
+                <br>Sahil Bhadane<br>sahilshashikant.bhadane2021@vitstudent.ac.in</p>
+            </div>
+            <button id="closeButton" onclick="closeContactDialog()" class="mt-4 btn text-white bg-blue-600 hover:bg-blue-700 w-full py-2 px-3 rounded-md">Close</button>
+        </div>
+    </div>
+
+    <script>
+        // Function to submit the feedback
+        function submitFeedback() {
+            // Implement your feedback submission logic here
+            alert('Feedback submitted successfully!');
+        }
+
+        function openContactDialog() {
+            const contactDialog = document.getElementById('contactDialog');
+            contactDialog.style.display = 'flex';
+        }
+
+        function closeContactDialog() {
+            const contactDialog = document.getElementById('contactDialog');
+            contactDialog.style.display = 'none';
+        }
+
+        document.querySelectorAll('a').forEach(function (element) {
+            element.addEventListener('click', function (event) {
+                event.preventDefault();
+                navigate(element.getAttribute('href'));
+            });
+        });
+
+        function navigate(url) {
+            window.location.href = url; // Redirect to the specified URL
+        }
+    </script>
+
+</body>
+</html>

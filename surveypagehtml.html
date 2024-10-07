@@ -1,0 +1,242 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- Include the Tailwind CSS stylesheet -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css">
+    <style>
+        /* Additional styles for the survey container */
+        #surveyContainer {
+            background-color: white;
+            width: 80%;
+            max-width: 800px;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            margin: 20px auto;
+            overflow-y: scroll;
+            max-height: 80vh; /* Adjusted height */
+        }
+
+        /* Additional style for the submit button */
+        #submitSurveyButton {
+            width: auto; /* Adjusted width */
+            padding: 12px 24px; /* Added padding */
+            font-size: 1.25rem;
+            font-weight: bold;
+            color: white;
+            background-color: #2563EB;
+            border: none;
+            border-radius: 8px;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+
+        #submitSurveyButton:hover {
+            background-color: #1E40AF;
+        }
+    </style>
+    <title>Survey Page</title>
+</head>
+<body class="min-h-screen flex items-center justify-center bg-gradient-to-br from-purple-500 to-blue-700 relative">
+
+    <!-- Top right buttons container -->
+    <div class="absolute top-4 right-4 flex space-x-6" style="margin-right: 1px;">
+        <!-- Contact Us button -->
+        <button onclick="openContactDialog()" class='font-medium text-white hover:text-gray-300'>
+            Contact Us
+        </button>
+        <!-- Sign Out button -->
+        <a href='/home' onclick="event.preventDefault(); navigate('/homes');" class='font-medium text-white hover:text-gray-300'>
+            Sign Out
+        </a>
+    </div>
+
+    <!-- Survey Container -->
+    <div id="surveyContainer">
+        <h1 class="text-2xl font-bold mb-4">Survey Questions</h1>
+
+        <!-- Survey Questions -->
+        <div class="space-y-4">
+            <!-- Question 1 -->
+            <div class="flex items-start">
+                <p class="font-semibold">1) Do you often forget where you placed common items like keys or glasses?</p>
+                <div class="ml-auto flex items-center">
+                    <label class="mr-2">
+                        <input type="radio" name="question1" value="Yes"> Yes
+                    </label>
+                    <label class="mr-2">
+                        <input type="radio" name="question1" value="No"> No
+                    </label>
+                </div>
+            </div>
+
+            <!-- Question 2 -->
+            <div class="flex items-start">
+                <p class="font-semibold">2) Do you sometimes have trouble remembering important dates like birthdays?</p>
+                <div class="ml-auto flex items-center">
+                    <label class="mr-2">
+                        <input type="radio" name="question2" value="Yes"> Yes
+                    </label>
+                    <label class="mr-2">
+                        <input type="radio" name="question2" value="No"> No
+                    </label>
+                </div>
+            </div>
+
+            <!-- Question 3 -->
+            <div class="flex items-start">
+                <p class="font-semibold">3) Have you experienced difficulty in recognizing familiar faces recently?</p>
+                <div class="ml-auto flex items-center">
+                    <label class="mr-2">
+                        <input type="radio" name="question3" value="Yes"> Yes
+                    </label>
+                    <label class="mr-2">
+                        <input type="radio" name="question3" value="No"> No
+                    </label>
+                </div>
+            </div>
+
+            <!-- Question 4 -->
+            <div class="flex items-start">
+                <p class="font-semibold">4) Do you find it challenging to follow conversations or remember recent events?</p>
+                <div class="ml-auto flex items-center">
+                    <label class="mr-2">
+                        <input type="radio" name="question4" value="Yes"> Yes
+                    </label>
+                    <label class="mr-2">
+                        <input type="radio" name="question4" value="No"> No
+                    </label>
+                </div>
+            </div>
+
+            <!-- Question 5 -->
+            <div class="flex items-start">
+                <p class="font-semibold">5) Have you ever gotten lost in familiar surroundings?</p>
+                <div class="ml-auto flex items-center">
+                    <label class="mr-2">
+                        <input type="radio" name="question5" value="Yes"> Yes
+                    </label>
+                    <label class="mr-2">
+                        <input type="radio" name="question5" value="No"> No
+                    </label>
+                </div>
+            </div>
+
+            <!-- Question 6 -->
+            <div class="flex items-start">
+                <p class="font-semibold">6) Do you frequently repeat questions or stories?</p>
+                <div class="ml-auto flex items-center">
+                    <label class="mr-2">
+                        <input type="radio" name="question6" value="Yes"> Yes
+                    </label>
+                    <label class="mr-2">
+                        <input type="radio" name="question6" value="No"> No
+                    </label>
+                </div>
+            </div>
+
+            <!-- Question 7 -->
+            <div class="flex items-start">
+                <p class="font-semibold">7) Have you noticed any changes in your ability to complete normal familiar tasks?</p>
+                <div class="ml-auto flex items-center">
+                    <label class="mr-2">
+                        <input type="radio" name="question7" value="Yes"> Yes
+                    </label>
+                    <label class="mr-2">
+                        <input type="radio" name="question7" value="No"> No
+                    </label>
+                </div>
+            </div>
+
+            <!-- Question 8 -->
+            <div class="flex items-start">
+                <p class="font-semibold">8) Do you sometimes struggle to find the right words during conversations?</p>
+                <div class="ml-auto flex items-center">
+                    <label class="mr-2">
+                        <input type="radio" name="question8" value="Yes"> Yes
+                    </label>
+                    <label class="mr-2">
+                        <input type="radio" name="question8" value="No"> No
+                    </label>
+                </div>
+            </div>
+
+            <!-- Question 9 -->
+            <div class="flex items-start">
+                <p class="font-semibold">9) Have you experienced difficulty in remembering recent events or conversations?</p>
+                <div class="ml-auto flex items-center">
+                    <label class="mr-2">
+                        <input type="radio" name="question9" value="Yes"> Yes
+                    </label>
+                    <label class="mr-2">
+                        <input type="radio" name="question9" value="No"> No
+                    </label>
+                </div>
+            </div>
+
+            <!-- Question 10 -->
+            <div class="flex items-start">
+                <p class="font-semibold">10) Do you find it hard to concentrate or focus for extended periods?</p>
+                <div class="ml-auto flex items-center">
+                    <label class="mr-2">
+                        <input type="radio" name="question10" value="Yes"> Yes
+                    </label>
+                    <label class="mr-2">
+                        <input type="radio" name="question10" value="No"> No
+                    </label>
+                </div>
+            </div>
+
+        </div>
+
+        <!-- Submit Button -->
+        <div class="flex justify-center mt-6">
+            <button id="submitSurveyButton" onclick="submitSurvey()">Submit</button>
+        </div>
+    </div>
+
+    <!-- Contact Us Dialog -->
+    <div id="contactDialog" class="fixed inset-0 bg-black bg-opacity-50 hidden items-center justify-center">
+        <div class="bg-white p-8 rounded-md max-w-md" id="contactDialogContent">
+            <div class="zoom-container">
+                <p class="text-lg text-gray-800">Ebin Joe<br>ebinjoe2002@gmail.com<br>
+                <br>Sahil Bhadane<br>sahilshashikant.bhadane2021@vitstudent.ac.in</p>
+            </div>
+            <button id="closeButton" onclick="closeContactDialog()" class="mt-4 btn text-white bg-blue-600 hover:bg-blue-700 w-full py-2 px-3 rounded-md">Close</button>
+        </div>
+    </div>
+
+    <script>
+        // Function to submit the survey
+        function submitSurvey() {
+            // Add functionality to process and submit survey data
+            alert('Survey submitted successfully!');
+            // Implement your survey submission logic here
+        }
+
+        function openContactDialog() {
+            const contactDialog = document.getElementById('contactDialog');
+            contactDialog.style.display = 'flex';
+        }
+
+        function closeContactDialog() {
+            const contactDialog = document.getElementById('contactDialog');
+            contactDialog.style.display = 'none';
+        }
+
+        document.querySelectorAll('a').forEach(function (element) {
+            element.addEventListener('click', function (event) {
+                event.preventDefault();
+                navigate(element.getAttribute('href'));
+            });
+        });
+
+        function navigate(url) {
+            window.location.href = url; // Redirect to the specified URL
+        }
+    </script>
+
+</body>
+</html>

@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- Include the Tailwind CSS stylesheet -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css">
+    <!-- Include the Framer Motion library -->
+    <script src="https://unpkg.com/framer-motion@5.11.3/dist/framer-motion.umd.min.js"></script>
+    <title>Welcome to a new era of authentication!</title>
+    <style>
+        /* Custom CSS styles */
+        .hero-text {
+            color: #FFFFFF;
+            margin-top: 30vh; /* Adjust the vertical alignment */
+        }
+
+        .hero-subtext {
+            color: #CCCCCC;
+            font-size: 1.5rem;
+            font-weight: normal;
+            margin-top: 1rem; /* Adjust the spacing between title and text */
+        }
+    </style>
+</head>
+
+<body class="flex flex-col min-h-screen">
+
+    <!-- Header -->
+    <header class="absolute w-full z-30">
+        <div class="max-w-6xl mx-auto px-5 sm:px-6">
+            <div class="flex items-center justify-between h-16 md:h-20">
+                <!-- Site navigation -->
+                <nav class="flex flex-grow">
+                    <ul class="flex flex-grow justify-end flex-wrap items-center">
+                        <!-- Navigation items -->
+                        <li>
+                            <button onclick="navigate('/registration');" class='font-medium text-white px-5 py-3 hover:text-gray-300'>
+                                <span>Sign Up</span>
+                            </button>
+                        </li>
+                        <li>
+                            <button onclick="navigate('/signin_page');" class='font-medium text-white px-5 py-3 hover:text-gray-300'>
+                                <span>Sign In</span>
+                            </button>
+                        </li>
+                        <li>
+                            <button onclick="navigate('/about');" class='font-medium text-white px-5 py-3 hover:text-gray-300'>
+                                <span>About</span>
+                            </button>
+                        </li>
+                        <li>
+                            <button onclick="openContactDialog()" class='font-medium text-white px-5 py-3 hover:text-gray-300'>
+                                <span>Contact Us</span>
+                            </button>
+                        </li>
+                    </ul>
+                </nav>
+            </div>
+        </div>
+    </header>
+
+    <!-- Main content -->
+    <main class='flex-grow'>
+        <!-- Hero section -->
+        <section class='relative'>
+            <!-- Background gradient -->
+            <div class='absolute inset-0 h-128 pt-16 box-content bg-gradient-to-br from-purple-500 to-blue-700 min-h-screen'></div>
+
+            <!-- Hero content -->
+            <div class='relative max-w-6xl mx-auto px-4 sm:px-6'>
+                <div class='pt-24 pb-12 md:pt-32 md:pb-20'>
+                    <div class='text-center pb-12 md:pb-16'>
+                        <!-- Main heading -->
+                        <h1 class='text-7xl font-extrabold leading-tighter tracking-tighter mb-4 hero-text'>
+                            AlzheimARK
+                        </h1>
+                        <!-- Subtext paragraph -->
+                        <p class="text-xl hero-subtext">
+                            Unlocking Memories, Embracing Moments: Your Journey with Alzheimer's
+                        </p>
+			<img src="{{ url_for('static', filename='alz.jpg') }}" alt="Alzheimer's Image" class="mx-auto mt-4" style="max-width: 100%; height: auto;">
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- Contact Us Dialog -->
+    <div id="contactDialog" class="fixed inset-0 bg-black bg-opacity-50 hidden items-center justify-center">
+        <div class="bg-white p-8 rounded-md max-w-md" id="contactDialogContent">
+            <div class="zoom-container">
+                <p class="text-lg text-gray-800">Ebin Joe<br>ebinjoe2002@gmail.com<br>
+                <br>Sahil Bhadane<br>sahilshashikant.bhadane2021@vitstudent.ac.in</p>
+            </div>
+            <button id="closeButton" onclick="closeContactDialog()" class="mt-10 btn text-white bg-blue-600 hover:bg-blue-700 w-full py-2 px-3 rounded-md">Close</button>
+        </div>
+    </div>
+
+    <!-- Include the script to handle navigation -->
+    <script>
+        document.querySelectorAll('a').forEach(function (element) {
+            element.addEventListener('click', function (event) {
+                event.preventDefault();
+                navigate(element.getAttribute('href'));
+            });
+        });
+
+        function navigate(url) {
+            window.location.href = url; // Redirect to the specified URL
+        }
+
+        // Function to open Contact Us Dialog
+        function openContactDialog() {
+            document.getElementById('contactDialog').style.display = 'flex';
+        }
+
+        // Function to close Contact Us Dialog
+        function closeContactDialog() {
+            document.getElementById('contactDialog').style.display = 'none';
+        }
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- Include the Tailwind CSS stylesheet -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css">
+    <style>
+        /* Additional styles for the destination container */
+        #destinationContainer {
+            background-color: white;
+            width: 80%;
+            max-width: 800px;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            margin: 20px auto;
+        }
+
+        /* Additional style for the generate QR code button */
+        #generateQRButton {
+            width: auto;
+            padding: 12px 24px;
+            font-size: 1.25rem;
+            font-weight: bold;
+            color: white;
+            background-color: #2563EB;
+            border: none;
+            border-radius: 8px;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+
+        #generateQRButton:hover {
+            background-color: #1E40AF;
+        }
+    </style>
+    <title>Destination Page</title>
+</head>
+<body class="min-h-screen flex items-center justify-center bg-gradient-to-br from-purple-500 to-blue-700 relative">
+    <!-- Top right buttons container -->
+    <div class="absolute top-4 right-4 flex space-x-6">
+        <button onclick="openContactDialog()" class='font-medium text-white hover:text-gray-300'>Contact Us</button>
+        <a href='/home' onclick="event.preventDefault(); navigate('/homes');" class='font-medium text-white hover:text-gray-300'>Sign Out</a>
+    </div>
+    <!-- Destination Container -->
+    <div id="destinationContainer">
+        <h1 class="text-2xl font-bold mb-4">Destination Details</h1>
+        <!-- Destination Form -->
+        <form id="desUpForm" action="/generate_qr" method="POST">
+            <div class="space-y-4">
+                <div class="flex items-center">
+                    <label class="mr-4 w-20 font-semibold">From:</label>
+                    <input type="text" name="from" class="flex-1 px-4 py-2 rounded border" placeholder="Enter origin">
+                </div>
+                <div class="flex items-center">
+                    <label class="mr-4 w-20 font-semibold">To:</label>
+                    <input type="text" name="to" class="flex-1 px-4 py-2 rounded border" placeholder="Enter destination">
+                </div>
+                <div class="flex items-center">
+                    <label class="mr-4 w-20 font-semibold">Guider Number:</label>
+                    <input type="text" name="guider_number" class="flex-1 px-4 py-2 rounded border" placeholder="Enter guider number">
+                </div>
+                <div class="flex items-center">
+                    <label class="mr-4 w-20 font-semibold">Destination Address:</label>
+                    <input type="text" name="destination_address" class="flex-1 px-4 py-2 rounded border" placeholder="Enter destination address">
+                </div>
+                <div class="flex items-center">
+                    <label class="mr-4 w-20 font-semibold">Destination Contact:</label>
+                    <input type="text" name="destination_contact" class="flex-1 px-4 py-2 rounded border" placeholder="Enter destination contact">
+                </div>
+            </div>
+            <!-- Generate QR Code Button -->
+            <div class="flex justify-center mt-6">
+                <button type="button" id="generateQRButton" onclick="submitForm()">Generate QR Code</button>
+            </div>
+        </form>
+    </div>
+    <!-- Contact Us Dialog -->
+    <div id="contactDialog" class="fixed inset-0 bg-black bg-opacity-50 hidden items-center justify-center">
+        <div class="bg-white p-8 rounded-md max-w-md">
+            <p class="text-lg text-gray-800">Ebin Joe<br>ebinjoe2002@gmail.com<br><br>Sahil Bhadane<br>sahilshashikant.bhadane2021@vitstudent.ac.in</p>
+            <button id="closeButton" onclick="closeContactDialog()" class="mt-4 btn text-white bg-blue-600 hover:bg-blue-700 w-full py-2 px-3 rounded-md">Close</button>
+        </div>
+    </div>
+    <script>
+        function submitForm() {
+            var form = document.getElementById('desUpForm');
+            var from = form['from'].value.trim();
+            var to = form['to'].value.trim();
+            var guiderNumber = form['guider_number'].value.trim();
+            var destinationAddress = form['destination_address'].value.trim();
+            var destinationContact = form['destination_contact'].value.trim();
+
+            if (!from) {
+                alert("Please enter the origin.");
+                return;
+            } else if (!to) {
+                alert("Please enter the destination.");
+                return;
+            } else if (!guiderNumber) {
+                alert("Please enter the guider number.");
+                return;
+            } else if (!destinationAddress) {
+                alert("Please enter the destination address.");
+                return;
+            } else if (!destinationContact) {
+                alert("Please enter the destination contact.");
+                return;
+            }
+            
+            form.submit(); // All checks passed, submit the form
+        }
+
+        function openContactDialog() {
+            document.getElementById('contactDialog').style.display = 'flex';
+        }
+
+        function closeContactDialog() {
+            document.getElementById('contactDialog').style.display = 'none';
+        }
+
+        document.querySelectorAll('a').forEach(function (element) {
+            element.addEventListener('click', function (event) {
+                event.preventDefault();
+                navigate(element.getAttribute('href'));
+            });
+        });
+
+        function navigate(url) {
+            window.location.href = url; // Redirect to the specified URL
+        }
+    </script>
+</body>
+</html>
